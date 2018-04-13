@@ -4,4 +4,4 @@ Just trying out some angular stuff to make a d3 api viewer using a key from bliz
 
 Will need to have your own API key and replace it in get-profile.service.ts.
 
-Will try to implement read a file to input instead later on.
+Make a "foo.txt" inside src/assets with your key to use a key from file.
