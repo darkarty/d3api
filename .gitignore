@@ -44,4 +44,4 @@ testem.log
 Thumbs.db
 
 #key file
-/*/foo.txt
+/src/asset/foo.txt
