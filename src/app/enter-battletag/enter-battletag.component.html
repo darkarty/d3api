@@ -1,0 +1,15 @@
+<h3>
+  Enter your BattleTag here
+
+  <div>
+      <input [(ngModel)]="battleTagInterface.name" placeholder="name">
+  </div>
+
+  <button (click)="getProfile()">Get Diablo 3 Profile</button>
+</h3>
+
+<app-general-information [battleTag]="battleTagProfileReturned"></app-general-information>
+<app-nonseasonal [heroes]="seasonalHeroes"></app-nonseasonal>
+<app-seasonal [heroes]="nonSeasonalHeroes"></app-seasonal>
+
+
