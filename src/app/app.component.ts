@@ -6,7 +6,7 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Find your Diablo 3 heroes!';
+  title = 'Find your Diablo 3 profile!';
   constructor() {}
 
 }

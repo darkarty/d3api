@@ -10,5 +10,4 @@ export class GeneralInformationComponent {
 
   @Input() battleTag: BattleTagProfile;
 
-  @Input() seasonalHeroes: Hero[];
 }

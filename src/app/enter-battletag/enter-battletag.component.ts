@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BattleTagProfile, GetProfileService, Hero} from '../get-profile.service';
+import {forkJoin} from 'rxjs/observable/forkJoin';
 
 @Component({
   selector: 'app-enter-battletag',
   templateUrl: './enter-battletag.component.html',
   styleUrls: ['./enter-battletag.component.css']
 })
-export class EnterBattletagComponent {
+export class EnterBattletagComponent implements OnInit {
 
   battleTagInterface = {
     name: ''
   };
-  seasonalHeroes: Hero[];
-  nonSeasonalHeroes: Hero[];
-  battleTagProfileReturned: BattleTagProfile;
+  battleTagProfileReturned: any;
+  apiKey: string;
   constructor(private getProfileService: GetProfileService) {}
   getProfile() {
-    this.getProfileService
-      .getProfile(encodeURIComponent(this.battleTagInterface.name))
-      .subscribe(data => this.battleTagProfileReturned = data);
-    this.seasonalHeroes = this.battleTagProfileReturned.heroes.filter(x => x.seasonal === true);
-    this.nonSeasonalHeroes = this.battleTagProfileReturned.heroes.filter(x => x.seasonal === false);
+    this.getProfileService.buildGetProfileRequest(encodeURIComponent(this.battleTagInterface.name), this.apiKey)
+      .subscribe( data => this.battleTagProfileReturned = data);
+  }
+  ngOnInit() {
+    this.getProfileService.getKey().subscribe(data => this.apiKey = data);
   }
 }
+
+

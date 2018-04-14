@@ -7,6 +7,11 @@ import {Hero} from '../get-profile.service';
   styleUrls: ['./seasonal.component.css']
 })
 export class SeasonalComponent {
-  @Input() heroes: Hero[];
+  _seasonalHeroes: any;
+  @Input()
+  set profile(profile: any) {
+    this._seasonalHeroes = profile.heroes.filter(x => x.seasonal === true);
+  }
+  get profile(): any {return this._seasonalHeroes; }
   constructor() { }
 }

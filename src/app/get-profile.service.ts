@@ -27,13 +27,12 @@ export interface Hero {
 @Injectable()
 
 export class GetProfileService {
-  apiKey: String;
   constructor(private http: HttpClient) { }
-  public getProfile(battleTag): Observable<BattleTagProfile> {
+  public buildGetProfileRequest(battleTag, apiKey): Observable<BattleTagProfile> {
     return this.http.get<BattleTagProfile>('https://us.api.battle.net/d3/profile/' + battleTag +
-      '/?locale=en_US&apikey=' + this.getKey());
+      '/?locale=en_US&apikey=' + apiKey);
   }
-  public getKey() {
-    return this.http.get('assets/foo.txt').subscribe(data => this.apiKey = data.toString());
+  public getKey(): Observable<string> {
+    return this.http.get('assets/foo.txt', {responseType: 'text'});
   }
 }

@@ -2,4 +2,4 @@
 
 
 <h4>hero component</h4>
-<p>{{heroes[0] | json}}</p>
+<p *ngFor="let hero of heroes">{{hero | json}}</p>
